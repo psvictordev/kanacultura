@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KanaCultura | Tabacaria & Café — Madalena, Recife</title>
+<meta name="description" content="KanaCultura: tabacaria e café na Madalena, Recife. Reinauguração em 03/10 no novo endereço. Charutos, narguilé, café especial e um espaço para desacelerar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --verde:        #2D3B2A;
+    --verde-mid:    #3E5438;
+    --verde-light:  #566F4E;
+    --verde-muted:  #7A9470;
+    --bege:         #E8DCC8;
+    --bege-light:   #F2EBD9;
+    --bege-dark:    #C9BA9E;
+    --terracota:    #B05C3A;
+    --terracota-l:  #C97A54;
+    --marrom:       #4A3728;
+    --off-black:    #1A2218;
+    --mostarda:     #E6B23A;
+    --verde-kana:   #1F9A5A;
+    --text-muted:   #8A9E84;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --pad-x: clamp(1.5rem, 5vw, 4rem);
+  }
+
+  html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+  body {
+    background: var(--off-black);
+    color: var(--bege);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--terracota-l); outline-offset: 3px;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem var(--pad-x);
+    background: rgba(26,34,24,0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(86,111,78,0.2);
+  }
+  .nav-logo {
+    font-family: var(--serif); font-size: 1.4rem; font-weight: 700;
+    color: var(--bege-light); text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    color: var(--bege-dark); text-decoration: none;
+    font-size: 0.9rem; letter-spacing: 0.04em;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--terracota-l); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; display: grid; align-items: center;
+    position: relative; overflow: hidden; padding: 8rem var(--pad-x) 6rem;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 65% 55% at 75% 25%, rgba(62,84,56,0.35) 0%, transparent 60%),
+      radial-gradient(ellipse 45% 70% at 15% 85%, rgba(176,92,58,0.14) 0%, transparent 55%),
+      linear-gradient(155deg, #0F1610 0%, #1A2218 50%, #141C12 100%);
+  }
+  .hero-ring {
+    position: absolute; top: 50%; right: 5%; transform: translateY(-50%);
+    width: 460px; height: 460px;
+    border: 1px solid rgba(86,111,78,0.18); border-radius: 50%;
+  }
+  .hero-ring::before {
+    content: ''; position: absolute; inset: 36px;
+    border: 1px solid rgba(86,111,78,0.1); border-radius: 50%;
+  }
+  .hero-content { position: relative; max-width: 680px; }
+  .hero-tag {
+    display: inline-block; font-size: 0.85rem; letter-spacing: 0.04em;
+    color: var(--terracota-l);
+    border: 1px solid rgba(176,92,58,0.4); padding: 0.35rem 1rem; margin-bottom: 2rem;
+    animation: fadeUp 0.7s ease both;
+  }
+  .hero-title {
+    font-family: var(--serif); font-size: clamp(3.4rem, 9vw, 7rem);
+    font-weight: 900; line-height: 1.0; letter-spacing: -0.02em;
+    margin-bottom: 1rem; color: var(--bege-light);
+    animation: fadeUp 0.7s 0.15s ease both;
+  }
+  .hero-title em { font-style: italic; color: var(--verde-kana); }
+  .hero-subtitle {
+    font-family: var(--serif); font-size: clamp(1rem, 1.8vw, 1.3rem);
+    font-weight: 400; font-style: italic; color: var(--text-muted);
+    margin-bottom: 1.5rem; animation: fadeUp 0.7s 0.28s ease both;
+  }
+  .hero-desc {
+    font-size: 1rem; color: var(--bege-dark); max-width: 460px;
+    margin-bottom: 2.5rem; line-height: 1.85; opacity: 0.85;
+    animation: fadeUp 0.7s 0.38s ease both;
+  }
+  .hero-cta { display: flex; gap: 1.2rem; flex-wrap: wrap; animation: fadeUp 0.7s 0.5s ease both; }
+  .btn-primary {
+    background: var(--terracota); color: var(--bege-light);
+    padding: 0.9rem 2.2rem; font-family: var(--sans); font-size: 0.95rem;
+    font-weight: 500; letter-spacing: 0.03em;
+    border: none; cursor: pointer; text-decoration: none;
+    transition: background 0.3s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--terracota-l); transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent; color: var(--bege); padding: 0.9rem 2.2rem;
+    font-family: var(--sans); font-size: 0.95rem; font-weight: 500;
+    letter-spacing: 0.03em;
+    border: 1px solid rgba(232,220,200,0.35); cursor: pointer; text-decoration: none;
+    transition: border-color 0.3s, color 0.3s, transform 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--terracota-l); color: var(--terracota-l); transform: translateY(-1px); }
+  .hero-hours {
+    position: absolute; bottom: 3rem; right: var(--pad-x); text-align: right;
+    opacity: 0.6; font-size: 0.85rem;
+  }
+  .hero-hours span {
+    display: block; font-family: var(--serif); font-style: italic;
+    font-size: 1.15rem; color: var(--bege-light);
+  }
+
+  /* DIVIDER */
+  .divider { display: flex; align-items: center; gap: 1.5rem; padding: 0 var(--pad-x); background: var(--off-black); }
+  .divider::before, .divider::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(86,111,78,0.3), transparent);
+  }
+  .divider-sym { color: var(--verde-muted); font-size: 1rem; opacity: 0.6; }
+
+  /* SECTION TEXT */
+  .section-tag { font-size: 0.9rem; color: var(--mostarda); margin-bottom: 0.75rem; }
+  .section-title {
+    font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700; line-height: 1.15; margin-bottom: 1.5rem; color: var(--bege-light);
+  }
+  .section-title em { font-style: italic; color: var(--verde-muted); }
+  .section-body { font-size: 1rem; color: rgba(201,186,158,0.8); line-height: 1.9; margin-bottom: 1.4rem; max-width: 56ch; }
+
+  /* ABOUT */
+  .about {
+    padding: 8rem var(--pad-x); display: grid; grid-template-columns: 1fr 1fr;
+    gap: 6rem; align-items: center;
+    background: linear-gradient(180deg, var(--off-black) 0%, #141C12 100%);
+  }
+  .about-media { position: relative; }
+  .about-gallery {
+    display: grid; grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr; gap: 4px;
+    aspect-ratio: 1 / 1.1;
+  }
+  .gallery-photo {
+    overflow: hidden; min-height: 0;
+    background: linear-gradient(135deg, var(--verde) 0%, #1A2218 100%);
+    border: 1px solid rgba(86,111,78,0.18);
+  }
+  .gallery-photo:nth-child(2) { background: linear-gradient(135deg, var(--marrom) 0%, #2A1E16 100%); }
+  .gallery-photo:nth-child(3) { background: linear-gradient(135deg, var(--verde-mid) 0%, #1A2218 100%); }
+  .gallery-photo img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: transform 0.5s ease; filter: saturate(0.85);
+  }
+  .gallery-photo:hover img { transform: scale(1.04); }
+  .gallery-photo.tall { grid-row: span 2; }
+
+  .about-badge {
+    position: absolute; bottom: -1.5rem; right: -1.5rem;
+    width: 110px; height: 110px; background: var(--terracota);
+    border-radius: 50%; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; color: var(--bege-light);
+  }
+  .about-badge strong { font-family: var(--serif); font-size: 1.6rem; font-weight: 900; line-height: 1; }
+  .about-badge small { font-size: 0.7rem; text-align: center; margin-top: 3px; line-height: 1.3; }
+
+  .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem 1.5rem; margin-top: 2.5rem; }
+  .feature-item { display: flex; align-items: flex-start; gap: 0.7rem; }
+  .feature-dot { width: 5px; height: 5px; background: var(--verde-muted); border-radius: 50%; margin-top: 0.65rem; flex-shrink: 0; }
+  .feature-text { font-size: 0.92rem; color: rgba(201,186,158,0.8); line-height: 1.5; }
+
+  /* PRODUCTS */
+  .products { padding: 8rem var(--pad-x); background: #111810; }
+  .products-header { text-align: center; margin-bottom: 5rem; }
+  .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(86,111,78,0.12); border: 1px solid rgba(86,111,78,0.12); }
+  .product-card { background: #111810; padding: 3rem 2.5rem; transition: background 0.4s; }
+  .product-card:hover { background: #182016; }
+  .product-line { width: 36px; height: 1px; background: var(--terracota-l); margin-bottom: 1.5rem; opacity: 0.6; transition: width 0.4s, opacity 0.4s; }
+  .product-card:hover .product-line { width: 64px; opacity: 1; }
+  .product-name { font-family: var(--serif); font-size: 1.3rem; font-weight: 700; color: var(--bege-light); margin-bottom: 0.75rem; }
+  .product-desc { font-size: 0.93rem; color: rgba(201,186,158,0.7); line-height: 1.75; }
+
+  /* GALERIA */
+  .gallery-section { background: #0F1510; }
+  .gallery-strip {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    height: 520px; gap: 3px;
+  }
+  .strip-photo {
+    overflow: hidden; position: relative;
+    background: linear-gradient(160deg, var(--verde) 0%, #141C12 100%);
+  }
+  .strip-photo:nth-child(2) { background: linear-gradient(160deg, var(--marrom) 0%, #2A1E16 100%); }
+  .strip-photo:nth-child(4) { background: linear-gradient(160deg, var(--terracota) 0%, #5C2A18 100%); }
+  .strip-photo img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: transform 0.6s ease; filter: saturate(0.85) brightness(0.9);
+  }
+  .strip-photo:hover img { transform: scale(1.05); filter: saturate(1) brightness(1); }
+  .strip-photo .overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(15,21,16,0.75) 100%);
+    pointer-events: none;
+  }
+  .strip-label {
+    position: absolute; bottom: 1.5rem; left: 1.5rem;
+    font-family: var(--serif); font-style: italic; font-size: 1.05rem;
+    color: rgba(242,235,217,0.9); line-height: 1.4;
+  }
+
+  /* EXPERIENCE */
+  .experience { padding: 8rem var(--pad-x); background: linear-gradient(180deg, #141C12 0%, var(--off-black) 100%); }
+  .exp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem 4rem; margin-top: 3rem; }
+  .exp-item { border-top: 1px solid rgba(86,111,78,0.3); padding-top: 1.75rem; }
+  .exp-title { font-family: var(--serif); font-size: 1.25rem; font-weight: 700; color: var(--bege-light); margin-bottom: 0.75rem; }
+  .exp-desc { font-size: 0.95rem; color: rgba(201,186,158,0.75); line-height: 1.8; max-width: 52ch; }
+
+  /* CONTACT */
+  .contact {
+    padding: 8rem var(--pad-x); background: #0F1510;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start;
+  }
+  .info-label { font-size: 0.85rem; color: var(--terracota-l); margin-bottom: 0.4rem; }
+  .info-value { font-family: var(--serif); font-size: 1.1rem; color: var(--bege); line-height: 1.6; }
+  .contact-info { display: flex; flex-direction: column; gap: 2.25rem; }
+  .social-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .social-btn {
+    display: inline-flex; align-items: center;
+    border: 1px solid rgba(86,111,78,0.4); padding: 0.65rem 1.3rem;
+    font-size: 0.9rem; color: var(--bege-dark); text-decoration: none;
+    transition: border-color 0.3s, color 0.3s;
+  }
+  .social-btn:hover { border-color: var(--terracota-l); color: var(--terracota-l); }
+  .map-placeholder {
+    aspect-ratio: 1; background: linear-gradient(135deg, #1A2218 0%, #111810 100%);
+    border: 1px solid rgba(86,111,78,0.2); display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 1.25rem; position: relative; overflow: hidden;
+  }
+  .map-placeholder::before {
+    content: ''; position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(86,111,78,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(86,111,78,0.06) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  .map-pin {
+    position: relative; width: 22px; height: 22px; background: var(--terracota);
+    border-radius: 50% 50% 50% 0; transform: rotate(-45deg);
+  }
+  .map-pin::after { content: ''; position: absolute; inset: 7px; background: var(--off-black); border-radius: 50%; }
+  .map-address { position: relative; text-align: center; font-family: var(--serif); font-style: italic; font-size: 1.1rem; color: var(--bege-light); line-height: 1.7; }
+  .map-link {
+    position: relative; font-size: 0.9rem; color: var(--bege);
+    text-decoration: none; border-bottom: 1px solid rgba(201,122,84,0.6); padding-bottom: 2px;
+    transition: color 0.3s;
+  }
+  .map-link:hover { color: var(--terracota-l); }
+
+  /* FOOTER */
+  footer {
+    padding: 2.5rem var(--pad-x); border-top: 1px solid rgba(86,111,78,0.15);
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem; background: #0A0F09;
+  }
+  .footer-logo { font-family: var(--serif); font-size: 1.15rem; font-weight: 700; font-style: italic; color: var(--verde-muted); }
+  .footer-copy { font-size: 0.8rem; color: rgba(232,220,200,0.5); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .hero-tag, .hero-title, .hero-subtitle, .hero-desc, .hero-cta { animation: none; }
+    * { transition: none !important; }
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem var(--pad-x); }
+    .nav-links { gap: 1.1rem; }
+    .nav-links a { font-size: 0.82rem; }
+    .hero { padding: 7rem var(--pad-x) 8rem; }
+    .hero-ring { display: none; }
+    .hero-hours { left: var(--pad-x); right: auto; text-align: left; bottom: 2rem; }
+    .about { grid-template-columns: 1fr; padding: 5rem var(--pad-x); gap: 3.5rem; }
+    .about-badge { right: 0.75rem; bottom: -1.25rem; width: 92px; height: 92px; }
+    .products, .experience, .contact { padding: 5rem var(--pad-x); }
+    .products-grid { grid-template-columns: 1fr; }
+    .products-header { margin-bottom: 3rem; }
+    .exp-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .contact { grid-template-columns: 1fr; gap: 3rem; }
+    footer { flex-direction: column; text-align: center; }
+    .gallery-strip { grid-template-columns: 1fr 1fr; height: auto; }
+    .strip-photo { height: 220px; }
+  }
+  @media (max-width: 480px) {
+    .nav-links li:first-child { display: none; }
+    .about-features { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav aria-label="Principal">
+  <a class="nav-logo" href="#inicio">KanaCultura</a>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#produtos">Produtos</a></li>
+    <li><a href="#galeria">Espaço</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
+
+<header class="hero" id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-ring"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Tabacaria &amp; Café · Madalena, Recife</div>
+    <h1 class="hero-title">Kana<em>Cultura</em></h1>
+    <p class="hero-subtitle">Um espaço para apreciar, descobrir e se conectar</p>
+    <p class="hero-desc">
+      Em novo endereço na Madalena, a KanaCultura une a tradição das tabacarias
+      com a hospitalidade de um café. Um ponto de encontro cultural em Recife.
+    </p>
+    <div class="hero-cta">
+      <a href="#produtos" class="btn-primary">Ver produtos</a>
+      <a href="#contato" class="btn-outline">Como chegar</a>
+    </div>
+  </div>
+  <div class="hero-hours">Reinauguração · sábado, 03/10<span>14h às 00h</span></div>
+</header>
+
+<div class="divider" aria-hidden="true"><span class="divider-sym">✦</span></div>
+
+<section class="about" id="sobre">
+  <div class="about-media">
+    <div class="about-gallery">
+      <div class="gallery-photo tall">
+        <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=800&q=80"
+             onerror="this.style.display='none'" alt="Interior de uma tabacaria com ambiente acolhedor" loading="lazy">
+      </div>
+      <div class="gallery-photo">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80"
+             onerror="this.style.display='none'" alt="Acessórios e produtos de tabacaria" loading="lazy">
+      </div>
+      <div class="gallery-photo">
+        <img src="https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?w=600&q=80"
+             onerror="this.style.display='none'" alt="Xícara de café especial" loading="lazy">
+      </div>
+    </div>
+    <div class="about-badge">
+      <strong>KC</strong>
+      <small>Madalena<br>Recife</small>
+    </div>
+  </div>
+
+  <div>
+    <p class="section-tag">Nossa história</p>
+    <h2 class="section-title">Onde o prazer<br>encontra a <em>cultura</em></h2>
+    <p class="section-body">
+      A KanaCultura nasceu de uma viagem a São Paulo, da visão de que uma tabacaria
+      pode ser muito mais do que um ponto de venda. Pode ser um ponto de encontro cultural.
+    </p>
+    <p class="section-body">
+      Em Recife, criamos um espaço acolhedor, moderno e descontraído, que reúne o melhor
+      do universo do café e do tabaco. Para quem valoriza o prazer das pequenas pausas.
+    </p>
+    <div class="about-features">
+      <div class="feature-item"><div class="feature-dot"></div><span class="feature-text">Curadoria especializada</span></div>
+      <div class="feature-item"><div class="feature-dot"></div><span class="feature-text">Ambiente aconchegante</span></div>
+      <div class="feature-item"><div class="feature-dot"></div><span class="feature-text">Atendimento personalizado</span></div>
+      <div class="feature-item"><div class="feature-dot"></div><span class="feature-text">Café especial selecionado</span></div>
+      <div class="feature-item"><div class="feature-dot"></div><span class="feature-text">Ponto de encontro cultural</span></div>
+      <div class="feature-item"><div class="feature-dot"></div><span class="feature-text">Pet friendly</span></div>
+      <div class="feature-item"><div class="feature-dot"></div><span class="feature-text">Quintal para ficar à vontade</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="products" id="produtos">
+  <div class="products-header">
+    <p class="section-tag">O que oferecemos</p>
+    <h2 class="section-title">Nossa <em>seleção</em></h2>
+  </div>
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="product-line"></div>
+      <h3 class="product-name">Charutos &amp; Cigarrilhas</h3>
+      <p class="product-desc">Seleção das melhores marcas nacionais e importadas, para paladares exigentes e iniciantes.</p>
+    </div>
+    <div class="product-card">
+      <div class="product-line"></div>
+      <h3 class="product-name">Narguilé &amp; Acessórios</h3>
+      <p class="product-desc">Equipamentos de qualidade, essências variadas e tudo para uma sessão perfeita.</p>
+    </div>
+    <div class="product-card">
+      <div class="product-line"></div>
+      <h3 class="product-name">Café Especial</h3>
+      <p class="product-desc">Do espresso ao coado, cafés de origem selecionada para acompanhar cada momento.</p>
+    </div>
+    <div class="product-card">
+      <div class="product-line"></div>
+      <h3 class="product-name">Ervas &amp; Blends</h3>
+      <p class="product-desc">Ervas naturais, blends exclusivos e produtos para novas experiências sensoriais.</p>
+    </div>
+    <div class="product-card">
+      <div class="product-line"></div>
+      <h3 class="product-name">Acessórios</h3>
+      <p class="product-desc">Isqueiros, cortadores, piteiras e tudo o que um apreciador precisa.</p>
+    </div>
+    <div class="product-card">
+      <div class="product-line"></div>
+      <h3 class="product-name">Kits &amp; Presentes</h3>
+      <p class="product-desc">Kits personalizados para quem aprecia o bom gosto, em todas as ocasiões.</p>
+    </div>
+  </div>
+</section>
+
+<section class="gallery-section" id="galeria" aria-label="Galeria do espaço">
+  <div class="gallery-strip">
+    <div class="strip-photo">
+      <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=800&q=80"
+           onerror="this.style.display='none'" alt="O espaço da KanaCultura" loading="lazy">
+      <div class="overlay"></div>
+      <span class="strip-label">O espaço</span>
+    </div>
+    <div class="strip-photo">
+      <img src="https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?w=600&q=80"
+           onerror="this.style.display='none'" alt="Café servido na KanaCultura" loading="lazy">
+      <div class="overlay"></div>
+      <span class="strip-label">O café</span>
+    </div>
+    <div class="strip-photo">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80"
+           onerror="this.style.display='none'" alt="Produtos da tabacaria" loading="lazy">
+      <div class="overlay"></div>
+      <span class="strip-label">Os produtos</span>
+    </div>
+    <div class="strip-photo">
+      <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=800&q=80"
+           onerror="this.style.display='none'" alt="Ambiente da KanaCultura" loading="lazy">
+      <div class="overlay"></div>
+      <span class="strip-label">A experiência</span>
+    </div>
+  </div>
+</section>
+
+<section class="experience" id="experiencia">
+  <p class="section-tag">Por que nos visitar</p>
+  <h2 class="section-title">A experiência<br><em>KanaCultura</em></h2>
+  <div class="exp-grid">
+    <div class="exp-item">
+      <h3 class="exp-title">Curadoria especializada</h3>
+      <p class="exp-desc">Cada produto passa por seleção criteriosa. Nossa equipe acompanha as melhores opções do mercado.</p>
+    </div>
+    <div class="exp-item">
+      <h3 class="exp-title">Atendimento personalizado</h3>
+      <p class="exp-desc">Seja apreciador experiente ou iniciante, nossa equipe orienta com conhecimento e sem julgamentos.</p>
+    </div>
+    <div class="exp-item">
+      <h3 class="exp-title">Espaço para desacelerar</h3>
+      <p class="exp-desc">Um ambiente onde o tempo passa mais devagar: para conversar, tomar um café e descobrir produtos sem pressa.</p>
+    </div>
+    <div class="exp-item">
+      <h3 class="exp-title">Comunidade &amp; cultura</h3>
+      <p class="exp-desc">Mais do que uma loja, um ponto de encontro para quem compartilha o apreço por bons produtos e boas conversas.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contato">
+  <div>
+    <p class="section-tag">Venha nos visitar</p>
+    <h2 class="section-title">Encontre a<br><em>KanaCultura</em></h2>
+    <div class="contact-info">
+      <div>
+        <p class="info-label">Endereço</p>
+        <p class="info-value">Rua Antônio Viêira, 164<br>Madalena, Recife, PE</p>
+      </div>
+      <div>
+        <p class="info-label">Reinauguração</p>
+        <p class="info-value">Sábado, 03 de outubro<br>14h às 00h</p>
+      </div>
+      <div>
+        <p class="info-label">WhatsApp</p>
+        <p class="info-value"><a href="https://wa.me/5581986169573" target="_blank" rel="noopener" style="color:var(--bege);text-decoration:none;border-bottom:1px solid rgba(230,178,58,.6)">(81) 98616-9573</a></p>
+      </div>
+      <div>
+        <p class="info-label">Redes sociais</p>
+        <div class="social-links">
+          <a class="social-btn" href="https://www.instagram.com/kanacultura/" target="_blank" rel="noopener">Instagram</a>
+          <a class="social-btn" href="https://web.facebook.com/people/KanaCultura/61571111976806/" target="_blank" rel="noopener">Facebook</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="map-placeholder">
+    <span class="map-pin" aria-hidden="true"></span>
+    <p class="map-address">Rua Antônio Viêira, 164<br>Madalena, Recife, PE</p>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Rua+Ant%C3%B4nio+Vi%C3%AAira+164+Madalena+Recife" target="_blank" rel="noopener">Abrir no Google Maps</a>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-logo">KanaCultura</span>
+  <span class="footer-copy">© 2026 KanaCultura · Tabacaria &amp; Café · Recife, PE</span>
+</footer>
+
+</body>
+</html>
