@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KanaCultura | Tabacaria & Café — Madalena, Recife</title>
 <meta name="description" content="KanaCultura: tabacaria e café na Madalena, Recife. Reinauguração em 03/10 no novo endereço. Charutos, narguilé, café especial e um espaço para desacelerar.">
+<meta name="theme-color" content="#1A2218">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="KanaCultura | Tabacaria & Café — Madalena, Recife">
+<meta property="og:description" content="Reinauguração em 03/10 no novo endereço, na Madalena. Tabacaria, café especial e um espaço para desacelerar.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -26,6 +31,11 @@
     --mostarda:     #E6B23A;
     --verde-kana:   #1F9A5A;
     --text-muted:   #8A9E84;
+    --bg-deep:      #0F1510;
+    --bg-darker:    #0A0F09;
+    --bg-section:   #111810;
+    --bg-section-h: #182016;
+    --bg-fade:      #141C12;
     --serif: 'Playfair Display', Georgia, serif;
     --sans: 'DM Sans', system-ui, sans-serif;
     --pad-x: clamp(1.5rem, 5vw, 4rem);
@@ -67,7 +77,7 @@
 
   /* HERO */
   .hero {
-    min-height: 100vh; display: grid; align-items: center;
+    min-height: 100vh; min-height: 100svh; display: grid; align-items: center;
     position: relative; overflow: hidden; padding: 8rem var(--pad-x) 6rem;
   }
   .hero-bg {
@@ -111,22 +121,17 @@
     animation: fadeUp 0.7s 0.38s ease both;
   }
   .hero-cta { display: flex; gap: 1.2rem; flex-wrap: wrap; animation: fadeUp 0.7s 0.5s ease both; }
-  .btn-primary {
-    background: var(--terracota); color: var(--bege-light);
+  .btn {
     padding: 0.9rem 2.2rem; font-family: var(--sans); font-size: 0.95rem;
     font-weight: 500; letter-spacing: 0.03em;
-    border: none; cursor: pointer; text-decoration: none;
-    transition: background 0.3s, transform 0.2s;
+    border: 1px solid transparent; cursor: pointer; text-decoration: none;
+    transition: background 0.3s, border-color 0.3s, color 0.3s, transform 0.2s;
   }
-  .btn-primary:hover { background: var(--terracota-l); transform: translateY(-1px); }
-  .btn-outline {
-    background: transparent; color: var(--bege); padding: 0.9rem 2.2rem;
-    font-family: var(--sans); font-size: 0.95rem; font-weight: 500;
-    letter-spacing: 0.03em;
-    border: 1px solid rgba(232,220,200,0.35); cursor: pointer; text-decoration: none;
-    transition: border-color 0.3s, color 0.3s, transform 0.2s;
-  }
-  .btn-outline:hover { border-color: var(--terracota-l); color: var(--terracota-l); transform: translateY(-1px); }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--terracota); color: var(--bege-light); }
+  .btn-primary:hover { background: var(--terracota-l); }
+  .btn-outline { background: transparent; color: var(--bege); border-color: rgba(232,220,200,0.35); }
+  .btn-outline:hover { border-color: var(--terracota-l); color: var(--terracota-l); }
   .hero-hours {
     position: absolute; bottom: 3rem; right: var(--pad-x); text-align: right;
     opacity: 0.6; font-size: 0.85rem;
@@ -157,7 +162,7 @@
   .about {
     padding: 8rem var(--pad-x); display: grid; grid-template-columns: 1fr 1fr;
     gap: 6rem; align-items: center;
-    background: linear-gradient(180deg, var(--off-black) 0%, #141C12 100%);
+    background: linear-gradient(180deg, var(--off-black) 0%, var(--bg-fade) 100%);
   }
   .about-media { position: relative; }
   .about-gallery {
@@ -194,18 +199,18 @@
   .feature-text { font-size: 0.92rem; color: rgba(201,186,158,0.8); line-height: 1.5; }
 
   /* PRODUCTS */
-  .products { padding: 8rem var(--pad-x); background: #111810; }
+  .products { padding: 8rem var(--pad-x); background: var(--bg-section); }
   .products-header { text-align: center; margin-bottom: 5rem; }
   .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(86,111,78,0.12); border: 1px solid rgba(86,111,78,0.12); }
-  .product-card { background: #111810; padding: 3rem 2.5rem; transition: background 0.4s; }
-  .product-card:hover { background: #182016; }
+  .product-card { background: var(--bg-section); padding: 3rem 2.5rem; transition: background 0.4s; }
+  .product-card:hover { background: var(--bg-section-h); }
   .product-line { width: 36px; height: 1px; background: var(--terracota-l); margin-bottom: 1.5rem; opacity: 0.6; transition: width 0.4s, opacity 0.4s; }
   .product-card:hover .product-line { width: 64px; opacity: 1; }
   .product-name { font-family: var(--serif); font-size: 1.3rem; font-weight: 700; color: var(--bege-light); margin-bottom: 0.75rem; }
   .product-desc { font-size: 0.93rem; color: rgba(201,186,158,0.7); line-height: 1.75; }
 
   /* GALERIA */
-  .gallery-section { background: #0F1510; }
+  .gallery-section { background: var(--bg-deep); }
   .gallery-strip {
     display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr;
     height: 520px; gap: 3px;
@@ -233,7 +238,7 @@
   }
 
   /* EXPERIENCE */
-  .experience { padding: 8rem var(--pad-x); background: linear-gradient(180deg, #141C12 0%, var(--off-black) 100%); }
+  .experience { padding: 8rem var(--pad-x); background: linear-gradient(180deg, var(--bg-fade) 0%, var(--off-black) 100%); }
   .exp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem 4rem; margin-top: 3rem; }
   .exp-item { border-top: 1px solid rgba(86,111,78,0.3); padding-top: 1.75rem; }
   .exp-title { font-family: var(--serif); font-size: 1.25rem; font-weight: 700; color: var(--bege-light); margin-bottom: 0.75rem; }
@@ -241,7 +246,7 @@
 
   /* CONTACT */
   .contact {
-    padding: 8rem var(--pad-x); background: #0F1510;
+    padding: 8rem var(--pad-x); background: var(--bg-deep);
     display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start;
   }
   .info-label { font-size: 0.85rem; color: var(--terracota-l); margin-bottom: 0.4rem; }
@@ -255,8 +260,9 @@
     transition: border-color 0.3s, color 0.3s;
   }
   .social-btn:hover { border-color: var(--terracota-l); color: var(--terracota-l); }
+  .info-link { color: var(--bege); text-decoration: none; border-bottom: 1px solid rgba(230,178,58,0.6); }
   .map-placeholder {
-    aspect-ratio: 1; background: linear-gradient(135deg, #1A2218 0%, #111810 100%);
+    aspect-ratio: 1; background: linear-gradient(135deg, var(--off-black) 0%, var(--bg-section) 100%);
     border: 1px solid rgba(86,111,78,0.2); display: flex; flex-direction: column;
     align-items: center; justify-content: center; gap: 1.25rem; position: relative; overflow: hidden;
   }
@@ -281,7 +287,7 @@
   /* FOOTER */
   footer {
     padding: 2.5rem var(--pad-x); border-top: 1px solid rgba(86,111,78,0.15);
-    display: flex; align-items: center; justify-content: space-between; gap: 1rem; background: #0A0F09;
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem; background: var(--bg-darker);
   }
   .footer-logo { font-family: var(--serif); font-size: 1.15rem; font-weight: 700; font-style: italic; color: var(--verde-muted); }
   .footer-copy { font-size: 0.8rem; color: rgba(232,220,200,0.5); }
@@ -344,13 +350,14 @@
       com a hospitalidade de um café. Um ponto de encontro cultural em Recife.
     </p>
     <div class="hero-cta">
-      <a href="#produtos" class="btn-primary">Ver produtos</a>
-      <a href="#contato" class="btn-outline">Como chegar</a>
+      <a href="#produtos" class="btn btn-primary">Ver produtos</a>
+      <a href="#contato" class="btn btn-outline">Como chegar</a>
     </div>
   </div>
   <div class="hero-hours">Reinauguração · sábado, 03/10<span>14h às 00h</span></div>
 </header>
 
+<main>
 <div class="divider" aria-hidden="true"><span class="divider-sym">✦</span></div>
 
 <section class="about" id="sobre">
@@ -504,7 +511,7 @@
       </div>
       <div>
         <p class="info-label">WhatsApp</p>
-        <p class="info-value"><a href="https://wa.me/5581986169573" target="_blank" rel="noopener" style="color:var(--bege);text-decoration:none;border-bottom:1px solid rgba(230,178,58,.6)">(81) 98616-9573</a></p>
+        <p class="info-value"><a class="info-link" href="https://wa.me/5581986169573" target="_blank" rel="noopener">(81) 98616-9573</a></p>
       </div>
       <div>
         <p class="info-label">Redes sociais</p>
@@ -521,6 +528,7 @@
     <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Rua+Ant%C3%B4nio+Vi%C3%AAira+164+Madalena+Recife" target="_blank" rel="noopener">Abrir no Google Maps</a>
   </div>
 </section>
+</main>
 
 <footer>
   <span class="footer-logo">KanaCultura</span>
